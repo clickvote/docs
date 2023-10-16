@@ -1,0 +1,73 @@
+---
+title: "Development"
+description: "Learn how to run Clickvote locally"
+---
+
+<Info>
+  **Prerequisite** You should have installed Node.js (version 16 or higher) and
+  Docker.
+</Info>
+
+## Clone repo
+
+Clone Clickvote repo:
+
+```bash
+git clone https://github.com/clickvote/clickvote.git
+```
+
+This step should clone Clickvote repo into a `clickvote` folder on your computer.
+
+## Start MongoDB and Redis
+
+Go to `clickvote` folder and run the following command:
+
+```bash
+./start_services.sh
+```
+
+This command will create MongoDB and Redis Docker containers for you (you should have Docker daemon running). It will also attach Docker volumes
+to these containers, so the data will persist between restarts.
+
+By default MongoDB will be served at `mongodb://localhost:27017/clickvote` and Redis at `redis://localhost:6379`.
+
+## Setup env variables
+
+Run this command:
+
+```bash
+npm run setup
+```
+
+It will prompt you for env variables (you can use all default values if you started MongoDB and Redis using `./start_services.sh`).
+Also this command will install all libraries for you.
+
+## Run frontend and backend
+
+```bash
+npm run web
+```
+
+This command will run `frontend` and `backend` services. You can access `frontend` at `http://localhost:4200`, backend is running at `http://localhost:3000`.
+
+## Run websockets and consumers
+
+Run this command:
+
+```bash
+npm run upvotes
+```
+
+It will run `websockets` and `consumers` services for you. `Websockets` are running at `http://localhost:3001`.
+
+## Modify React component
+
+If you want to modify Clickvote React component and see how it changes in realtime together with a live websocket connection, use this command:
+
+```bash
+npm run dev:react-component
+```
+
+It will start Storybook for your at `http://localhost:4400`. There you will be able to see how React components look like and even interact with them! (make sure `websockets` are running.)
+
+To authenticate with `websockets` server, copy paste `public key` and `id` from a vote setup page (see [here](/quickstart#create-a-new-vote) how to create a new vote.)

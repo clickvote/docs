@@ -1,0 +1,59 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Clickvote",
+  "logo": {
+    "dark": "/logo/logo_text.svg",
+    "light": "/logo/logo_text_light.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#9563FF",
+    "light": "#AE87FF",
+    "dark": "#0D001D",
+    "background": {
+      "dark": "#090014"
+    },
+    "anchors": {
+      "from": "#FF7F57",
+      "to": "#9563FF"
+    }
+  },
+  "modeToggle": {
+    "default": "dark"
+  },
+  "topbarLinks": [
+    {
+      "name": "Go to app",
+      "url": "https://app.clickvote.dev"
+    }
+  ],
+  "topbarCtaButton": {
+    "type": "github",
+    "url": "https://github.com/clickvote/clickvote"
+  },
+  "anchors": [
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/clickvote/clickvote"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": ["introduction", "quickstart", "development"]
+    },
+    {
+      "group": "Guides",
+      "pages": ["guides/react", "guides/vue", "guides/iframe"]
+    },
+    {
+      "group": "Hosting Clickvote",
+      "pages": ["hosting/cloud-vs-self-hosting", "hosting/self-hosting"]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/clickvote/clickvote",
+    "website": "https://clickvote.dev"
+  }
+}

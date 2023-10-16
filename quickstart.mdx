@@ -1,0 +1,102 @@
+---
+title: "Quickstart"
+description: "Add likes to your app in 5 minutes"
+---
+
+As an example, we will add like component to [Clickvote](https://clickvote.dev) website.
+
+## Install Clickvote client library
+
+As of now, we have client library only for React. More coming soon.
+
+Get started by installing Clickvote React library:
+
+```bash
+npm i @clickvote/react
+```
+
+## Sign up to Clickvote cloud
+
+Create a free Clickvote account (no credit card required).
+
+<a href="https://app.clickvote.dev" target="_blank">
+  <img
+    src="/images/try-clickvote-cloud.svg"
+    alt="Try Clickvote Cloud"
+    width="215"
+  />
+</a>
+
+## Create a new vote
+
+Go to [votes](https://app.clickvote.dev/votes) page to create a new vote. Click on a `Add Vote` button.
+
+<Frame caption="Add new vote">
+  <img src="/images/clickvote_add_vote_arrow.png" alt="Clickvote Votes Pages" />
+</Frame>
+
+Give some name to your new vote and select a type (single for likes, range for ratings). Click `Save`.
+
+<Frame caption="Save new vote">
+  <img src="/images/clickvote_save_vote.png" alt="Clickvote Save Vote" />
+</Frame>
+
+## Integrate Clickvote into a website
+
+After you saved the vote, you should see this page:
+
+<Frame caption="Clickvote snippet page">
+  <img
+    src="/images/clickvote_vote_snippet_page.png"
+    alt="Clickvote Snippet Page"
+  />
+</Frame>
+
+In a top right corner you can select a type of the component you want (likes or upvotes).
+Then, you can simply copy and paste provided snippet into your website.
+
+In Clickvote `Vote` actually refers to a group of votes. So for instance, we want to include likes component on every page of Clickvote website.
+Obviously, we don't need to create a new vote for each of the pages.
+
+All the components will share the same `id`, but they will have different `voteTo`. Basically, `voteTo` indicates an item inside of vote group.
+It can be any string, for example name of the page or URL:
+
+```jsx
+return (
+  <ClickVoteProvider
+    value={{
+      apiUrl: "socket.clickvote.dev",
+      publicKey: "pb_zCKP4ozxpkxXJyIpfmWIpsE8wgH5BAXF",
+      userId: visitor,
+    }}
+  >
+    <ClickVoteComponent id="clickvote-likes" voteTo={window.location.href}>
+      {(props) => <LikeBtn {...props} />}
+    </ClickVoteComponent>
+  </ClickVoteProvider>
+);
+```
+
+Another important attribute is a `userId`. Currently Clickvote requires it to identify user and prevent the same person from doing multiple votes.
+
+After you added this snippet to your website, you should see a live clickable component.
+
+**Yay, you just integrated Clickvote into your website!**
+
+<Frame caption="Live Clickvote component">
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full aspect-video rounded"
+    src="/images/clickvote_looping_click.mp4"
+  ></video>
+</Frame>
+
+## Next steps
+
+Check out our guides to learn more about Clickvote:
+
+- [Using with React](/guides/react)
+- [Setting up development environment](/development)
